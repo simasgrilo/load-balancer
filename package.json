@@ -1,0 +1,22 @@
+{
+  "name": "loadbalancer",
+  "version": "1.0.0",
+  "description": "A Layer 7 OSI load balancer",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "load",
+    "balancer",
+    "node.js"
+  ],
+  "author": "simasgrilo <simasgrilo@gmail.com>",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1"
+  }
+}
