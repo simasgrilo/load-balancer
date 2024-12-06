@@ -1,0 +1,14 @@
+{
+    "servers" : [{
+            "name": "fastServer",
+            "ip": "http://127.0.0.1:3000",
+            "metadata": "Fast Server"
+        },{
+            "name": "slowServer",
+            "ip": "http://127.0.0.1:3001",
+            "metadata": "Slow Server"
+        }
+
+    ]
+
+}
