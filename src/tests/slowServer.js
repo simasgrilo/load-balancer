@@ -14,9 +14,16 @@ function timeout() {
 
 app.get("/", function (req, res) {
     timeout().then(function () {
-        return res.status(200).json({
-            "message": `Ended slow procesing after ${timeoutMs} miliseconds`
-        });
+        return res.status(200).send(`<!DOCTYPE html>
+            <html lang="en">
+                <head>
+                    <meta charset="utf-8">
+                    <title>Index Page</title>
+                </head>
+                <body>
+                    Hello from the web server running on port ${testPort}. I wait ${timeoutMs} to answer you.
+                </body>
+            </html>`);
     }
     );
 });
