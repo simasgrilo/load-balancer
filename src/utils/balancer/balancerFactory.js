@@ -7,7 +7,7 @@ class BalancerFactory {
     static getBalancer(algorithm) {
         switch (algorithm) {
             case types.RoundRobin:
-                return new RoundRobin();
+                return new RoundRobin().getInstance();
             case types.WeighedRoundRobin:
                 //TODO
                 return null;

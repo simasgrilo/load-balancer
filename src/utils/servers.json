@@ -4,10 +4,15 @@
             "ip": "http://127.0.0.1:3000",
             "metadata": "Fast Server"
         },{
-            "name": "slowServer",
+            "name": "midServer",
             "ip": "http://127.0.0.1:3001",
+            "metadata": "Mid Server"
+        },{
+            "name": "slowServer",
+            "ip": "http://127.0.0.1:3002",
             "metadata": "Slow Server"
         }
+
 
     ]
 
