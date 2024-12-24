@@ -1,5 +1,6 @@
 var BalancerTypes = require('./balancerTypes.js');
-var RoundRobin = require('./roundRobin.js')
+var RoundRobin = require('./roundRobin.js');
+const WeighedRoundRobin = require('./weightedRR.js');
 
 var types = BalancerTypes.makeEnum();
 
@@ -9,7 +10,7 @@ class BalancerFactory {
             case types.RoundRobin:
                 return new RoundRobin().getInstance();
             case types.WeighedRoundRobin:
-                //TODO
+                return new WeighedRoundRobin().getInstance();
                 return null;
             case types.IPHash:
                 //TODO

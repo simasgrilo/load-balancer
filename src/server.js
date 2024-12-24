@@ -9,14 +9,20 @@ const Forwarder = require("./utils/forwarder.js");
 const Balancer = require("./utils/balancer/balancerFactory.js");
 const Health = require('./utils/health.js');
 const Reader = require('./utils/reader.js');
+const Marshaler = require('./utils/args/marshaler.js'); 
 
 var serversList = JSON.parse(Reader.readServers("C:\\VSCode\\CodingChallenges\\LoadBalancer\\src\\utils\\servers.json"))["servers"];
 var fwd;
+const argsMap = Marshaler.process(process.argv);
+
+console.log(argsMap);
+
+
 
 var setupHealth = async function(){
   Health.scheduleHealthCheck(serversList);
   await Health.checkHealth(serversList);
-  fwd = new Forwarder();
+  fwd = new Forwarder(argsMap["algorithm"]);
   startApp();
 }
 var port = process.env.port || 80;

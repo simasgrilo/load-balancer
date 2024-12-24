@@ -4,6 +4,8 @@ const axios = require('axios');
 const dotenv = require('dotenv');
 const BalancerFactory = require('./balancer/balancerFactory.js'); 
 const Health = require('./health.js');
+const Types = require('./balancer/balancerTypes.js').makeEnum();
+
 
 //TODO: read from .env the file path of the server confi
 
@@ -17,9 +19,13 @@ class Forwarder {
     bal;
     serverStatus;
 
-    constructor() {
-        //use a factory to create the balancer. https://stackoverflow.com/questions/47866797/node-js-create-object-of-class-name-specified-in-variable & https://dev.to/carlillo/design-patterns---strategy-pattern-in-javascript-2hg3
-        this.bal = BalancerFactory.getBalancer("RoundRobin");
+    constructor(algorithm) {
+        //use a factory to create the balancer.
+        // https://stackoverflow.com/questions/47866797/node-js-create-object-of-class-name-specified-in-variable & https://dev.to/carlillo/design-patterns---strategy-pattern-in-javascript-2hg3
+        if (!algorithm in Types) {
+            throw new TypeError(`Algorithm ${algorithm} not supported`);
+        }
+        this.bal = BalancerFactory.getBalancer(algorithm);
     }
 
 
