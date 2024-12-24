@@ -56,7 +56,6 @@ class Health {
                     url: server.ip,
                     responseType: 'document'
                 });
-                console.log(reqCheck);
                 server.status = reqCheck.status;
                 server.statusText = reqCheck.statusText;
             }        
@@ -66,11 +65,11 @@ class Health {
             }
             this.serversHealth.push(server);
         }
+        console.log(this.serversHealth);
     }
     
     static scheduleHealthCheck(serversFile){
         cron.schedule(`* * * * * `, () => {
-            console.log("scheduled task started");
             this.checkHealth(serversFile);
         });
     }
